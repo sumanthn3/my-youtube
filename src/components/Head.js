@@ -12,6 +12,7 @@ import { cacheResults } from "../utils/searchSlice";
 
 import { Link } from "react-router-dom";
 import VideoCard from "./VideoCard";
+import profile from "../Assets/profile.jpeg";
 // import { useSelector } from "react-redux";
 const Head = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -96,7 +97,8 @@ const Head = () => {
       <div className="flex sm:col-span-1 col-span-2 justify-end">
         {/* <IoNotifications className="text-3xl m-2" /> */}
         <button>
-          <FaCircleUser className="text-3xl mx-2" />
+          {/* <FaCircleUser className="text-3xl mx-2" /> */}
+          <img className="h-10" alt="youtube-logo" src={profile}></img>
         </button>
       </div>
     </div>
