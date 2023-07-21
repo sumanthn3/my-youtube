@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import YouTube from "../Assets/yt.png";
 // import { ImYoutube } from "react-icons/im";
@@ -9,12 +9,28 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
 import { YOUTUBE_search_API } from "../utils/constants";
 import { cacheResults } from "../utils/searchSlice";
+
+import { Link } from "react-router-dom";
+import VideoCard from "./VideoCard";
 // import { useSelector } from "react-redux";
 const Head = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const searchCache = useSelector((store) => store.search);
+  const inputRef = useRef();
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (inputRef.current && !inputRef.current.contains(e.target)) {
+        setShowSuggestions(false);
+      }
+    };
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
   useEffect(() => {
     const timer = setTimeout(() => {
       if (searchCache[searchQuery]) {
@@ -38,9 +54,10 @@ const Head = () => {
     setSuggestions(results[1]);
     dispatch(cacheResults({ [searchQuery]: results[1] }));
   };
+
   return (
-    <div className="grid grid-flow-col p-3 mx-2 shadow-lg fixed top-0 bg-white w-full">
-      <div className="flex col-span-1">
+    <div className="grid grid-flow-col p-3 shadow-lg fixed top-0 bg-white w-full">
+      <div className="flex sm:col-span-1 col-span-3">
         <button onClick={() => toggleMenuHandler()}>
           <GiHamburgerMenu className="mx-2 text-2xl cursor-pointer" />
         </button>
@@ -48,49 +65,36 @@ const Head = () => {
         <h1 className="font-bold text-2xl m-1">YouTube</h1> */}
         <img className="h-6 m-2" alt="youtube-logo" src={YouTube}></img>
       </div>
-      <div className=" flex col-span-10 px-10">
+      <div className="flex sm:col-span-10 col-span-7 sm:px-10 pl-12 justify-center">
         <input
           placeholder="Search"
+          ref={inputRef}
           className="w-1/2 h-10 border-solid border-2 border-gray-300 rounded-l-full p-4"
           onChange={(e) => setSearchQuery(e.target.value)}
           onFocus={() => setShowSuggestions(true)}
-          onBlur={() => setShowSuggestions(false)}
         ></input>
-        <div className="flex w-14 h-10 border-2 border-l-0 border-gray-300 rounded-r-full text-gray-400 items-center justify-center">
-          <PiMagnifyingGlassBold className="text-2xl" />
-        </div>
+        <Link to={`/searchresults?search_query=${searchQuery}`}>
+          <div className="flex w-14 h-10 border-2 border-l-0 border-gray-300 rounded-r-full text-gray-400 items-center justify-center">
+            <PiMagnifyingGlassBold className="text-2xl" />
+          </div>
+        </Link>
         {showSuggestions && (
           <div className="fixed bg-white py-2 mt-10 w-1/3 shadow-lg rounded-lg border border-gray-100">
-            <ul>
-              {suggestions.map((s) => (
-                <div className="flex " key={s}>
-                  <PiMagnifyingGlassBold className="text-xl m-2 text-gray-400" />
-                  <li className="py-2  hover:bg-gray-100 hover:rounded-md">
-                    {s}
-                  </li>
-                </div>
-              ))}
-              {/* <li className="py-2 px-4 hover:bg-gray-100 hover:rounded-md">
-              iphone 10
-            </li>
-            <li className="py-2 px-4 hover:bg-gray-100 hover:rounded-md">
-              iphone 11
-            </li>
-            <li className="py-2 px-4 hover:bg-gray-100 hover:rounded-md">
-              iphone 13
-            </li>
-            <li className="py-2 px-4 hover:bg-gray-100 hover:rounded-md">
-              iphone 12
-            </li>
-            <li className="py-2 px-4 hover:bg-gray-100 hover:rounded-md">
-              iphone 11
-            </li> */}
-            </ul>
+            {suggestions.map((s, idx) => (
+              <Link
+                className="flex hover:bg-gray-400 rounded-full"
+                key={s}
+                to={`/searchresults?search_query=${s}`}
+              >
+                <PiMagnifyingGlassBold className="text-xl m-2 text-gray-400" />
+                <p className="flex p-1 px-2">{s}</p>
+              </Link>
+            ))}
           </div>
         )}
       </div>
-      <div className="flex col-span-1 justify-end">
-        <IoNotifications className="text-3xl m-2" />
+      <div className="flex sm:col-span-1 col-span-2 justify-end">
+        {/* <IoNotifications className="text-3xl m-2" /> */}
         <button>
           <FaCircleUser className="text-3xl mx-2" />
         </button>
