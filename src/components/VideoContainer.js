@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { YOUTUBE_VIDEOS_API } from "../utils/constants";
+import Shimmer from "./Shimmer";
 import VideoCard from "./VideoCard";
 const VideoContainer = () => {
-  const [videos, setVideos] = useState();
+  const [videos, setVideos] = useState([]);
   useEffect(() => {
     getVideos();
   }, []);
@@ -12,8 +13,12 @@ const VideoContainer = () => {
     const json = await data.json();
     setVideos(json?.items);
   };
+  //conditional rendering
+  if (videos && !videos.length) {
+    return <Shimmer />;
+  }
   return (
-    <div className="flex flex-wrap">
+    <div className="flex flex-wrap justify-around">
       {videos &&
         videos.map((video, idx) => (
           <Link key={video.id} to={"/watch?v=" + video.id}>

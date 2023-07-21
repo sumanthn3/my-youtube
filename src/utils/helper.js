@@ -178,6 +178,14 @@ var nameList = [
 export function generateRandomName() {
   return nameList[Math.floor(Math.random() * nameList.length)];
 }
+export const publishedAt = (dateString) => {
+  const date = new Date(dateString);
+  const differenceInMinutes = Date.now() - date.getTime();
+
+  const diffInDays = Math.floor(differenceInMinutes / (1000 * 60 * 60 * 24));
+
+  return diffInDays + " days ago";
+};
 
 export function makeRandomMessage(length) {
   let result = "";
@@ -190,6 +198,29 @@ export function makeRandomMessage(length) {
     counter += 1;
   }
   return result;
+}
+export function prettifyNumber(views) {
+  var thousand = 1000;
+  var million = 1000000;
+  var billion = 1000000000;
+  var trillion = 1000000000000;
+  if (views < thousand) {
+    return String(views);
+  }
+
+  if (views >= thousand && views <= 1000000) {
+    return Math.round(views / thousand) + "k";
+  }
+
+  if (views >= million && views <= billion) {
+    return Math.round(views / million) + "M";
+  }
+
+  if (views >= billion && views <= trillion) {
+    return Math.round(views / billion) + "B";
+  } else {
+    return Math.round(views / trillion) + "T";
+  }
 }
 
 export const findPrime = (num) => {

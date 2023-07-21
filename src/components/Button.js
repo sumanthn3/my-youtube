@@ -3,9 +3,13 @@ import React from "react";
 const Button = ({ name }) => {
   return (
     <div>
-      <button className="px-2 mx-2 h-8 text-sm bg-gray-200 rounded-md">
-        {name}
-      </button>
+      <a href={"/searchresults?search_query=" + name}>
+        <div>
+          <button className="bg-slate-100 rounded-full shadow-md hover:scale-110 inline-block font-normal m-2 py-1 px-3">
+            {name}
+          </button>
+        </div>
+      </a>
     </div>
   );
 };
