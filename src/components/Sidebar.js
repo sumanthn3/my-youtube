@@ -14,7 +14,7 @@ const SideBar = () => {
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
 
   return !isMenuOpen ? (
-    <div className="p-2 shadow-lg w-20">
+    <div className="h-[100vh] p-2 shadow-lg w-20">
       <Link to="/">
         <li className="flex flex-col justify-center items-center w-16 p-2 list-none hover:bg-gray-100 hover:rounded-md">
           <GrHomeRounded className="text-xl" />
@@ -35,7 +35,7 @@ const SideBar = () => {
       </li>
     </div>
   ) : (
-    <div className="p-5 shadow-lg w-60">
+    <div className="p-5 h-[100vh] shadow-lg w-60">
       <ul>
         <Link to="/">
           <li className="flex p-3 hover:bg-gray-100 hover:rounded-md">
