@@ -1,18 +1,17 @@
 import React, { useEffect, useState, useRef } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import YouTube from "../Assets/yt.png";
-// import { ImYoutube } from "react-icons/im";
-import { FaCircleUser } from "react-icons/fa6";
-import { IoNotifications } from "react-icons/io5";
 import { PiMagnifyingGlassBold } from "react-icons/pi";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
 import { YOUTUBE_search_API } from "../utils/constants";
 import { cacheResults } from "../utils/searchSlice";
-
-import { Link } from "react-router-dom";
-import VideoCard from "./VideoCard";
 import profile from "../Assets/profile.jpeg";
+import { Link } from "react-router-dom";
+// import VideoCard from "./VideoCard";
+// import { ImYoutube } from "react-icons/im";
+// import { FaCircleUser } from "react-icons/fa6";
+// import { IoNotifications } from "react-icons/io5";
 // import { useSelector } from "react-redux";
 const Head = () => {
   const [searchQuery, setSearchQuery] = useState("");

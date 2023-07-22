@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import { closeMenu } from "../utils/appSlice";
-import CommentsContainer from "./CommentsContainer";
-import LiveChat from "./LiveChat";
+// import CommentsContainer from "./CommentsContainer";
+// import LiveChat from "./LiveChat";
 import Comments from "./Comments";
 import {
   prettifyNumber,
@@ -20,7 +20,7 @@ const WatchPage = () => {
   const [videoDetails, setVideoDetails] = useState();
   const [channelDetails, setChannelDetails] = useState();
   const [moreEnabled, setMoreEnabled] = useState(false);
-  const [videoId, setVideoId] = useState(searchParams.get("v"));
+  const [videoId] = useState(searchParams.get("v"));
   // console.log(searchParams.get("v"));
   const dispatch = useDispatch();
   useEffect(() => {

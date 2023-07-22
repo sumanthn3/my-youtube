@@ -20,7 +20,7 @@ const ResultCard = ({ data }) => {
   if (!data) return null;
   // console.log(data)
 
-  const { snippet, id, statistics } = data;
+  const { snippet, id } = data;
   return isMobile ? (
     <Link to={`/watch?v=${id.videoId}`}>
       <div className="p-2 m-2 w-72 h-80 shadow-lg rounded-lg transition duration-500 ease-in-out hover:scale-105 hover:shadow-slate-400">
