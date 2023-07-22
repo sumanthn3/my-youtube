@@ -20,12 +20,13 @@ const WatchPage = () => {
   const [videoDetails, setVideoDetails] = useState();
   const [channelDetails, setChannelDetails] = useState();
   const [moreEnabled, setMoreEnabled] = useState(false);
+  const [videoId, setVideoId] = useState(searchParams.get("v"));
   // console.log(searchParams.get("v"));
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(closeMenu());
     getVideoDetails();
-  }, []);
+  }, [videoId]);
 
   const getVideoDetails = async () => {
     try {
