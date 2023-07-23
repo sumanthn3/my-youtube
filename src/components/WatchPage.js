@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import { closeMenu } from "../utils/appSlice";
 // import CommentsContainer from "./CommentsContainer";
@@ -21,6 +21,7 @@ const WatchPage = () => {
   const [channelDetails, setChannelDetails] = useState();
   const [moreEnabled, setMoreEnabled] = useState(false);
   const [videoId] = useState(searchParams.get("v"));
+  const isDark = useSelector((store) => store.theme.isDark);
   // console.log(searchParams.get("v"));
   const dispatch = useDispatch();
   useEffect(() => {
@@ -54,7 +55,11 @@ const WatchPage = () => {
   };
   const description = videoDetails?.snippet?.description || "";
   return (
-    <div className="sm:flex grid-flow-col w-full ">
+    <div
+      className={`sm:flex grid-flow-col w-full ${
+        isDark ? "bg-black text-white" : "bg-white text-black"
+      }`}
+    >
       <div className="sm:w-[70%] w-full">
         <div className="flex">
           <div className="sm:p-5 p-0 w-full ">
@@ -93,7 +98,11 @@ const WatchPage = () => {
                 {channelDetails?.statistics?.subscriberCount} Subscribers
               </p>
             </div>
-            <button className="bg-black text-white rounded-full px-2 font-bold h-10 my-1">
+            <button
+              className={`rounded-full px-2 font-bold h-10 my-1 ${
+                isDark ? "bg-white text-black" : "bg-black text-white"
+              }`}
+            >
               Subscribe
             </button>
           </div>
@@ -125,7 +134,11 @@ const WatchPage = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col bg-gray-100 rounded-lg p-4 mt-3 mx-2">
+        <div
+          className={`flex flex-col rounded-lg p-4 mt-3 mx-2 ${
+            isDark ? "bg-gray-500" : "bg-gray-100"
+          }`}
+        >
           <div className="flex font-semibold">
             <h2>
               {" "}

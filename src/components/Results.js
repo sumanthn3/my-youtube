@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import ResultCard from "./ResultCard";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { CardShimmer } from "./Shimmer";
 import { SEARCH_RESULTS_URL } from "../utils/constants";
 import { closeMenu } from "../utils/appSlice";
@@ -25,6 +25,7 @@ const Results = () => {
     setSearchResults(jsonData?.items);
     console.log(jsonData?.items);
   };
+  const isDark = useSelector((store) => store.theme.isDark);
   if (searchResults && !searchResults.length) {
     return <CardShimmer />;
   }
@@ -32,7 +33,7 @@ const Results = () => {
 
   return (
     <>
-      <div className="w-10/12">
+      <div className={`w-10/12 ${isDark ? "text-white" : "text-black"}`}>
         <h1 className="p-5 text-xl font-bold">
           Search results for:
           <span className="font-extrabold text-xl"> {query}</span>

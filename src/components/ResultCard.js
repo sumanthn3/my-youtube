@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
+import { useSelector } from "react-redux";
 const ResultCard = ({ data }) => {
   const [isMobile, setIsMobile] = useState(false);
+  const isDark = useSelector((store) => store.theme.isDark);
   console.log(data);
   useEffect(() => {
     const handleResize = () => {
@@ -23,7 +24,11 @@ const ResultCard = ({ data }) => {
   const { snippet, id } = data;
   return isMobile ? (
     <Link to={`/watch?v=${id.videoId}`}>
-      <div className="p-2 m-2 w-72 h-80 shadow-lg rounded-lg transition duration-500 ease-in-out hover:scale-105 hover:shadow-slate-400">
+      <div
+        className={`p-2 m-2 w-72 h-80 shadow-lg rounded-lg transition duration-500 ease-in-out hover:scale-105 ${
+          isDark ? "shadow-slate-800" : "shadow-slate-400"
+        } `}
+      >
         <img
           className="rounded-lg"
           src={snippet?.thumbnails?.medium?.url}

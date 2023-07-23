@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 // import { YOUTUBE_CAT_API } from "../utils/constants";
 import Button from "./Button";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
@@ -46,11 +47,13 @@ const ButtonList = () => {
     var slider = document.getElementById("slider");
     slider.scrollLeft = slider.scrollLeft + 500;
   };
-
+  const isDark = useSelector((store) => store.theme.isDark);
   return (
-    <div className="grid grid-flow-col">
+    <div className={`grid grid-flow-col ${isDark ? "bg-black" : "bg-white"}`}>
       <MdChevronLeft
-        className="hover:scale-150 my-auto opacity-50 "
+        className={`hover:scale-150 my-auto opacity-50 ${
+          isDark ? "text-white" : "text-black"
+        }`}
         size={30}
         onClick={slideLeft}
         aria-hidden="true"
@@ -64,7 +67,9 @@ const ButtonList = () => {
         ))}
       </div>
       <MdChevronRight
-        className="hover:scale-150 my-auto opacity-50 "
+        className={`hover:scale-150 my-auto opacity-50 ${
+          isDark ? "text-white" : "text-black"
+        }`}
         size={30}
         onClick={slideRight}
         aria-hidden="true"

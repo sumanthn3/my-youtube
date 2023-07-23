@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { GET_COMMENTS_URL } from "../utils/constants";
+import { useSelector } from "react-redux";
 
 const Comments = ({ videoId }) => {
   const [comments, setComments] = useState();
@@ -13,6 +14,7 @@ const Comments = ({ videoId }) => {
     console.log(json?.items);
     setComments(json?.items);
   };
+  const isDark = useSelector((store) => store.theme.isDark);
   return (
     <div>
       {comments &&
@@ -32,7 +34,11 @@ const Comments = ({ videoId }) => {
               </p>
             </div>
             <div className="text-ellipsis overflow-hidden">
-              <p className="text-gray-700 p-2 mx-8 whitespace-break-spaces">
+              <p
+                className={`p-2 mx-8 whitespace-break-spaces ${
+                  isDark ? "text-gray-100" : "text-gray-700 "
+                }`}
+              >
                 {comment.snippet?.topLevelComment?.snippet.textOriginal}
               </p>
             </div>
