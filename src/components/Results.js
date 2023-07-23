@@ -25,12 +25,12 @@ const Results = () => {
     setSearchResults(jsonData?.items);
     console.log(jsonData?.items);
   };
-
+  if (searchResults && !searchResults.length) {
+    return <CardShimmer />;
+  }
   //early return
-  if (!searchResults) return null;
-  return searchResults.length === 0 ? (
-    <CardShimmer />
-  ) : (
+
+  return (
     <>
       <div className="w-10/12">
         <h1 className="p-5 text-xl font-bold">

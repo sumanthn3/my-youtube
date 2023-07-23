@@ -6,7 +6,7 @@ const ResultCard = ({ data }) => {
   console.log(data);
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768); // Set the condition for mobile width, e.g., 768px
+      setIsMobile(window.innerWidth <= 480);
     };
 
     window.addEventListener("resize", handleResize);

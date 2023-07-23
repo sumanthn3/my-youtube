@@ -54,13 +54,12 @@ const WatchPage = () => {
   };
   const description = videoDetails?.snippet?.description || "";
   return (
-    <div className="flex w-full ">
-      <div className="w-[70%]">
+    <div className="sm:flex grid-flow-col w-full ">
+      <div className="sm:w-[70%] w-full">
         <div className="flex">
-          <div className="p-5  w-full ">
+          <div className="sm:p-5 p-0 w-full ">
             <iframe
-              width="100%"
-              height="600"
+              className="w-full sm:h-[600px] h-80"
               src={
                 "https://www.youtube.com/embed/" +
                 searchParams.get("v") +
@@ -81,7 +80,7 @@ const WatchPage = () => {
             {videoDetails?.snippet?.title}
           </h1>
         </div>
-        <div className="flex justify-between">
+        <div className="sm:flex grid-flow-col justify-between">
           <div className="flex gap-5 mx-4">
             <img
               className="h-12 rounded-full w-12 object-cover"
@@ -155,7 +154,7 @@ const WatchPage = () => {
         {/* <CommentsContainer videoId={searchParams.get("v")} /> */}
         <Comments videoId={searchParams.get("v")} />
       </div>
-      <div className="w-[30%]">
+      <div className="sm:w-[30%] w-full">
         <div>
           <h1 className="font-extrabold">Related Videos</h1>
           <RelatedVideos />

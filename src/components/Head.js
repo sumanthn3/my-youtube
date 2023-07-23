@@ -19,7 +19,17 @@ const Head = () => {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const searchCache = useSelector((store) => store.search);
   const inputRef = useRef();
-
+  const [isMobileHead, setIsMobileHead] = useState(false);
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobileHead(window.innerWidth <= 480);
+    };
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (inputRef.current && !inputRef.current.contains(e.target)) {
@@ -58,14 +68,18 @@ const Head = () => {
   return (
     <div className="grid grid-flow-col p-3 shadow-lg fixed top-0 bg-white w-full">
       <div className="flex sm:col-span-1 col-span-3">
-        <button onClick={() => toggleMenuHandler()}>
-          <GiHamburgerMenu className="mx-2 text-2xl cursor-pointer" />
-        </button>
+        {!isMobileHead && (
+          <button onClick={() => toggleMenuHandler()}>
+            <GiHamburgerMenu className="mx-2 text-2xl cursor-pointer" />
+          </button>
+        )}
         {/* <ImYoutube className="text-4xl text-red-600 my-1 ml-3" />
         <h1 className="font-bold text-2xl m-1">YouTube</h1> */}
-        <img className="h-6 m-2" alt="youtube-logo" src={YouTube}></img>
+        <Link to={"/"}>
+          <img className="h-6 m-2" alt="youtube-logo" src={YouTube}></img>
+        </Link>
       </div>
-      <div className="flex sm:col-span-10 col-span-7 sm:px-10 pl-12 justify-center">
+      <div className="flex sm:col-span-10 col-span-7 sm:px-10 justify-center">
         <input
           placeholder="Search"
           ref={inputRef}

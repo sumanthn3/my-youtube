@@ -10,7 +10,7 @@ export const YOUTUBE_SUB_API =
   "https://youtube.googleapis.com/youtube/v3/subscriptions?part=snippet%2CcontentDetails&mine=true&key=" +
   KEY;
 export const YOUTUBE_search_API =
-  "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
+  "https://corsproxy.io/?http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
 
 export const RELATED_VIDEOS_URL = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=30&key=${KEY}&relatedToVideoId=`;
 export const GET_COMMENTS_URL = `https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&maxResults=35&key=${KEY}&videoId=`;

@@ -11,7 +11,7 @@ const VideoSuggestionsCard = ({ info }) => {
       <ScrollToTop />
       <div className="flex flex-row rounded-lg mt-2  transition duration-400 ease-in-out hover:scale-[1.02] hover:shadow-slate-400">
         <img
-          className="rounded-lg w-[180px] "
+          className="rounded-lg w-[180px] sm:h-auto h-24 p-1"
           alt="thumbnail"
           src={thumbnails.medium.url}
         />
