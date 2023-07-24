@@ -2,9 +2,13 @@
 
 `Youtube clone project`
 
-## Home
+## Home Web Version
 
 ![Home Image](./src/Assets/Home.png)
+
+## Home Mobile Version
+
+![Mobile Image](./src/Assets/YoutubeMobile.png)
 
 ## Videos
 
@@ -26,11 +30,8 @@
   <a href="https://reactjs.org/"><img alt="Made With React" src="https://img.shields.io/badge/made%20with-react-61DAFB?style=for-the-badge&logo=react&logoColor=white" /></a>
   <a href="https://github.com/prettier/prettier"><img alt="code style: prettier" src="https://img.shields.io/badge/code_style-prettier-ff69b4?style=for-the-badge&logo=prettier&logoColor=white" /></a>
   <br/>
-  <!-- <a href="https://sumanthnandeti.netlify.app/"><img alt="Vercel Status" src="https://img.shields.io/badge/vercel-success-000000?style=for-the-badge&logo=vercel&logoColor=white" /></a>
-  <a href="https://github.com/sumanthn3/myPortfolio"><img alt="Maintenance" src="https://img.shields.io/badge/maintained-yes-44CC11?style=for-the-badge" /></a>
-  <a href="https://sumanthn3.vercel.app"><img alt="Website" src="https://img.shields.io/badge/website-up-F9A825?style=for-the-badge" /></a>
-  <br/>
-  <a href="https://sumanthnandeti.netlify.app"><img alt="Netlify Status" src="https://api.netlify.com/api/v1/badges/760e3894-259a-45fb-b2c2-bce676e71cfb/deploy-status" /></a> -->
+  <a href="https://snutube.netlify.app"><img alt="Website" src="https://img.shields.io/badge/website-up-F9A825?style=for-the-badge" /></a>
+  <a href="https://snutube.netlify.app"><img alt="Netlify Status" src="https://api.netlify.com/api/v1/badges/760e3894-259a-45fb-b2c2-bce676e71cfb/deploy-status" /></a>
 </p>
 
 Here are some of the key skills I possess:
@@ -39,6 +40,16 @@ Here are some of the key skills I possess:
 - UI/UX design principles for engaging user experiences.
 - Git for version control and GitHub collaboration.
 - Problem-solving and analytical thinking.
+
+## `Key Features:`
+
+- ✅ Real-time data fetching with the YouTube Data API.
+- ✅ Smooth user experience with global state management powered by Redux.
+- ✅ Beautiful and responsive design crafted using Tailwind CSS.
+- ✅ Faster and smarter searches with integrated Google search suggestion API.
+- ✅ Efficient display of search suggestions using Debouncing technique.
+- ✅ Enjoy a Dark Theme and Light Theme for personalized viewing.
+- ✅ Responsive design optimized for both web and mobile devices.
 
 ## Available Scripts
 
