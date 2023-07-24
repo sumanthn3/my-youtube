@@ -55,6 +55,14 @@ Here are some of the key skills I possess:
 
 In the project directory, you can run:
 
+## `Steps to run it on your system`
+
+- Use git clone https://github.com/sumanthn3/my-youtube.git to clone the project.
+- Change into the cloned folder.
+- Install all the project dependencies by Running npm install command.
+- Create .env file and add youtube API key.
+- Run npm start to start the project.
+
 ### `npm start`
 
 Runs the app in the development mode.\
