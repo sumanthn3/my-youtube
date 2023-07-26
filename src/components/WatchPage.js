@@ -95,7 +95,8 @@ const WatchPage = () => {
             <div>
               <p className="text-xl">{videoDetails?.snippet?.channelTitle}</p>
               <p className="text-m text-gray-500">
-                {channelDetails?.statistics?.subscriberCount} Subscribers
+                {prettifyNumber(channelDetails?.statistics?.subscriberCount)}{" "}
+                Subscribers
               </p>
             </div>
             <button
@@ -111,7 +112,7 @@ const WatchPage = () => {
               <div className="flex border-2 border-y-0 border-l-0 border-gray-300 px-2">
                 <BiLike className="mx-1 text-xl" />
                 <p className="font-bold">
-                  {videoDetails?.statistics?.likeCount}
+                  {prettifyNumber(videoDetails?.statistics?.likeCount)}
                 </p>
               </div>
 

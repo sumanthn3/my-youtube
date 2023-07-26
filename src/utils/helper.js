@@ -178,13 +178,28 @@ var nameList = [
 export function generateRandomName() {
   return nameList[Math.floor(Math.random() * nameList.length)];
 }
+// export const publishedAt = (dateString) => {
+//   const date = new Date(dateString);
+//   const differenceInMinutes = Date.now() - date.getTime();
+
+//   const diffInDays = Math.floor(differenceInMinutes / (1000 * 60 * 60 * 24));
+
+//   return diffInDays + " days ago";
+// };
 export const publishedAt = (dateString) => {
   const date = new Date(dateString);
   const differenceInMinutes = Date.now() - date.getTime();
 
   const diffInDays = Math.floor(differenceInMinutes / (1000 * 60 * 60 * 24));
+  const diffInHours = Math.floor(differenceInMinutes / (1000 * 60 * 60));
 
-  return diffInDays + " days ago";
+  if (diffInDays === 0) {
+    return diffInHours + " hours ago";
+  } else if (diffInDays === 1) {
+    return diffInDays + " day ago";
+  } else {
+    return diffInDays + " days ago";
+  }
 };
 
 export function makeRandomMessage(length) {
@@ -200,26 +215,30 @@ export function makeRandomMessage(length) {
   return result;
 }
 export function prettifyNumber(views) {
-  var thousand = 1000;
-  var million = 1000000;
-  var billion = 1000000000;
-  var trillion = 1000000000000;
+  const thousand = 1000;
+  const million = 1000000;
+  const billion = 1000000000;
+  const trillion = 1000000000000;
+
   if (views < thousand) {
     return String(views);
   }
 
-  if (views >= thousand && views <= 1000000) {
+  if (views >= thousand && views < million) {
     return Math.round(views / thousand) + "k";
   }
 
-  if (views >= million && views <= billion) {
-    return Math.round(views / million) + "M";
+  if (views >= million && views < billion) {
+    const millions = (views / million).toFixed(1);
+    return millions + "M";
   }
 
-  if (views >= billion && views <= trillion) {
-    return Math.round(views / billion) + "B";
+  if (views >= billion && views < trillion) {
+    const billions = (views / billion).toFixed(1);
+    return billions + "B";
   } else {
-    return Math.round(views / trillion) + "T";
+    const trillions = (views / trillion).toFixed(1);
+    return trillions + "T";
   }
 }
 

@@ -1,5 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import {
+  prettifyNumber,
+  publishedAt as publishedAtFunc,
+} from "./../utils/helper";
 const VideoCard = ({ info }) => {
   const { statistics, snippet } = info;
   const { channelTitle, title, thumbnails } = snippet;
@@ -23,8 +27,10 @@ const VideoCard = ({ info }) => {
         <li className="font-bold">{title}</li>
         <li>{channelTitle}</li>
         <li>
-          {parseFloat((statistics.viewCount / 1000000).toFixed(1))}M Views
+          {prettifyNumber(statistics.viewCount)} Views •{" "}
+          {publishedAtFunc(snippet.publishedAt)}
         </li>
+        {/* <h2 className="ml-4">{publishedAtFunc(snippet.publishedAt)}</h2> */}
       </ul>
     </div>
   );

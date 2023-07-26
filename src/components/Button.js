@@ -9,7 +9,7 @@ const Button = ({ name }) => {
         <div>
           <button
             className={`rounded-full shadow-md hover:scale-110 inline-block font-normal m-2 py-1 px-3 ${
-              isDark ? "bg-gray-500 text-white" : "bg-slate-100 text-black"
+              isDark ? "bg-gray-700 text-white" : "bg-slate-200 text-black"
             }`}
           >
             {name}
