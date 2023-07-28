@@ -44,15 +44,13 @@ const Comments = ({ videoId }) => {
             </div>
             <div className="flex gap-6 mx-10">
               <span className="flex gap-2">
-                <BiLike fontSize="20px" color="rgb(74, 73, 73)" />
-                <div className="">
-                  {comment.snippet?.topLevelComment?.snippet?.likeCount}
-                </div>
+                <BiLike className="text-gray-500 text-xl" />
+                <p>{comment.snippet?.topLevelComment?.snippet?.likeCount}</p>
               </span>
               <div>
-                <BiDislike fontSize="20px" color="rgb(74, 73, 73)" />
+                <BiDislike className="text-gray-500 text-xl" />
               </div>
-              <div className="font-bold text-sm">Reply</div>
+              <p className="font-bold text-sm">Reply</p>
             </div>
 
             {/* <div className="pl-5 border border-l-black ml-5">
