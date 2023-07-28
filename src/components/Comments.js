@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { GET_COMMENTS_URL } from "../utils/constants";
 import { useSelector } from "react-redux";
-
+import { BiLike, BiDislike } from "react-icons/bi";
 const Comments = ({ videoId }) => {
   const [comments, setComments] = useState();
 
@@ -41,6 +41,18 @@ const Comments = ({ videoId }) => {
               >
                 {comment.snippet?.topLevelComment?.snippet.textOriginal}
               </p>
+            </div>
+            <div className="flex gap-6 mx-10">
+              <span className="flex gap-2">
+                <BiLike fontSize="20px" color="rgb(74, 73, 73)" />
+                <div className="">
+                  {comment.snippet?.topLevelComment?.snippet?.likeCount}
+                </div>
+              </span>
+              <div>
+                <BiDislike fontSize="20px" color="rgb(74, 73, 73)" />
+              </div>
+              <div className="font-bold text-sm">Reply</div>
             </div>
 
             {/* <div className="pl-5 border border-l-black ml-5">
