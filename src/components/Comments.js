@@ -45,7 +45,9 @@ const Comments = ({ videoId }) => {
             <div className="flex gap-6 mx-10">
               <span className="flex gap-2">
                 <BiLike className="text-gray-500 text-xl" />
-                <p>{comment.snippet?.topLevelComment?.snippet?.likeCount}</p>
+                {comment.snippet?.topLevelComment?.snippet?.likeCount > 0 && (
+                  <p>{comment.snippet?.topLevelComment?.snippet?.likeCount}</p>
+                )}
               </span>
               <div>
                 <BiDislike className="text-gray-500 text-xl" />
