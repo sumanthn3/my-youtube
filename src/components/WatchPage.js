@@ -42,7 +42,7 @@ const WatchPage = () => {
       console.error('Error fetching video details:', error);
     }
   };
-  //test
+  //test 2
 
   const getChannelDetails = async (channelId) => {
     try {
