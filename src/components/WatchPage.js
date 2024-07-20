@@ -1,26 +1,26 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useSearchParams } from "react-router-dom";
-import { closeMenu } from "../utils/appSlice";
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useSearchParams } from 'react-router-dom';
+import { closeMenu } from '../utils/appSlice';
 // import CommentsContainer from "./CommentsContainer";
 // import LiveChat from "./LiveChat";
-import Comments from "./Comments";
+import Comments from './Comments';
 import {
   prettifyNumber,
   publishedAt as publishedAtFunc,
-} from "./../utils/helper";
-import { CHANNEL_DETAILS_URL, VIDEO_DETAILS_FROM_ID } from "../utils/constants";
+} from './../utils/helper';
+import { CHANNEL_DETAILS_URL, VIDEO_DETAILS_FROM_ID } from '../utils/constants';
 
-import { PiShareFatLight } from "react-icons/pi";
-import { BiLike, BiDislike } from "react-icons/bi";
-import RelatedVideos from "./RelatedVideos";
+import { PiShareFatLight } from 'react-icons/pi';
+import { BiLike, BiDislike } from 'react-icons/bi';
+import RelatedVideos from './RelatedVideos';
 
 const WatchPage = () => {
   const [searchParams] = useSearchParams();
   const [videoDetails, setVideoDetails] = useState();
   const [channelDetails, setChannelDetails] = useState();
   const [moreEnabled, setMoreEnabled] = useState(false);
-  const [videoId] = useState(searchParams.get("v"));
+  const [videoId] = useState(searchParams.get('v'));
   const isDark = useSelector((store) => store.theme.isDark);
   // console.log(searchParams.get("v"));
   const dispatch = useDispatch();
@@ -31,7 +31,7 @@ const WatchPage = () => {
 
   const getVideoDetails = async () => {
     try {
-      const data = await fetch(VIDEO_DETAILS_FROM_ID + searchParams.get("v"));
+      const data = await fetch(VIDEO_DETAILS_FROM_ID + searchParams.get('v'));
       const json = await data.json();
       console.log(json?.items[0]);
       setVideoDetails(json?.items[0]);
@@ -39,9 +39,10 @@ const WatchPage = () => {
       // Call getChannelDetails only on success of getVideoDetails
       getChannelDetails(json?.items[0]?.snippet?.channelId);
     } catch (error) {
-      console.error("Error fetching video details:", error);
+      console.error('Error fetching video details:', error);
     }
   };
+  //test
 
   const getChannelDetails = async (channelId) => {
     try {
@@ -50,14 +51,14 @@ const WatchPage = () => {
       console.log(json?.items[0].snippet?.thumbnails?.default?.url);
       setChannelDetails(json?.items[0]);
     } catch (error) {
-      console.error("Error fetching channel details:", error);
+      console.error('Error fetching channel details:', error);
     }
   };
-  const description = videoDetails?.snippet?.description || "";
+  const description = videoDetails?.snippet?.description || '';
   return (
     <div
       className={`sm:flex grid-flow-col w-full ${
-        isDark ? "bg-black text-white" : "bg-white text-black"
+        isDark ? 'bg-black text-white' : 'bg-white text-black'
       }`}
     >
       <div className="sm:w-[70%] w-full">
@@ -66,9 +67,9 @@ const WatchPage = () => {
             <iframe
               className="w-full sm:h-[600px] h-80"
               src={
-                "https://www.youtube.com/embed/" +
-                searchParams.get("v") +
-                "?autoplay=1"
+                'https://www.youtube.com/embed/' +
+                searchParams.get('v') +
+                '?autoplay=1'
               }
               title="YouTube video player"
               frameBorder="0"
@@ -95,13 +96,13 @@ const WatchPage = () => {
             <div>
               <p className="text-xl">{videoDetails?.snippet?.channelTitle}</p>
               <p className="text-m text-gray-500">
-                {prettifyNumber(channelDetails?.statistics?.subscriberCount)}{" "}
+                {prettifyNumber(channelDetails?.statistics?.subscriberCount)}{' '}
                 Subscribers
               </p>
             </div>
             <button
               className={`rounded-full px-2 font-bold h-10 my-1 ${
-                isDark ? "bg-white text-black" : "bg-black text-white"
+                isDark ? 'bg-white text-black' : 'bg-black text-white'
               }`}
             >
               Subscribe
@@ -117,7 +118,7 @@ const WatchPage = () => {
               </div>
 
               <div className="flex">
-                {" "}
+                {' '}
                 <BiDislike className="mx-1 text-xl" />
               </div>
             </div>
@@ -137,12 +138,12 @@ const WatchPage = () => {
         </div>
         <div
           className={`flex flex-col rounded-lg p-4 mt-3 mx-2 ${
-            isDark ? "bg-gray-500" : "bg-gray-100"
+            isDark ? 'bg-gray-500' : 'bg-gray-100'
           }`}
         >
           <div className="flex font-semibold">
             <h2>
-              {" "}
+              {' '}
               {prettifyNumber(videoDetails?.statistics?.viewCount)} views
             </h2>
             <h2 className="ml-4">
@@ -156,7 +157,7 @@ const WatchPage = () => {
               className="cursor-pointer text-blue-600"
               onClick={() => setMoreEnabled((bool) => !bool)}
             >
-              {moreEnabled ? " ...Show Less" : "...Show More"}
+              {moreEnabled ? ' ...Show Less' : '...Show More'}
             </h1>
           </div>
         </div>
@@ -166,7 +167,7 @@ const WatchPage = () => {
           </h1>
         </div>
         {/* <CommentsContainer videoId={searchParams.get("v")} /> */}
-        <Comments videoId={searchParams.get("v")} />
+        <Comments videoId={searchParams.get('v')} />
       </div>
       <div className="sm:w-[30%] w-full">
         <div>
